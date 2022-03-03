@@ -1,11 +1,11 @@
 class BadRequestError extends Error {
     constructor(statusCode, message) {
-        super()
-        this.statusCode = statusCode
-        this.message = message
-    }
+        super();
+        this.statusCode = statusCode;
+        this.message = message;
+    }   
 }
-
+    
 class ErrorHandler {
     constructor() {
         this.handleError = (error, responseStream = null) => {
@@ -14,13 +14,13 @@ class ErrorHandler {
                     message: error.message || 'Internal Server Errol',
                 })
             } else {
-                console.log(error)
+                console.log(error);
             }
-        }
+        };
     }
 }
 
 module.exports = {
     BadRequestError,
     ErrorHandler: new ErrorHandler(),
-}
+};

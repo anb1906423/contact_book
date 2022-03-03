@@ -1,3 +1,4 @@
+const { BadRequestError } = require("../errors")
 
 exports.create = (req, res) => {
     res.send({ message: "create handler" })
@@ -25,4 +26,18 @@ exports.deleteAll = (req, res) => {
 
 exports.findAllFavorite = (req, res) => {
     res.send({ message: "findAllFavorite handler" })
+}
+
+// Buoi 02
+exports.create = async (req, res, next) => {
+    if (!req.body.name) {
+        return next(new BadRequestError(400, 'Name can not be empty'))
+    }
+
+    const contact = new Contact({
+        name: req.body.name,
+        email: req.body.email,
+        address: req.body.address,
+        phone: req.body.phone
+    })
 }
